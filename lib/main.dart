@@ -1,21 +1,3 @@
-/*import 'package:flutter/material.dart';
-
-void main() {
-  runApp(const MyApp());
-}
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}*/
 import 'package:flutter/material.dart';
 
 void main(List<String> args) {
@@ -36,8 +18,29 @@ class MyFirstCalss extends StatelessWidget {
                 'AppBar from Messaoud',
                 style: TextStyle(fontSize: 30),
               )),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              // action
+              showSnackBar(context);
+            },
+            tooltip: 'Add new ListView',
+            child: const Icon(Icons.add),
+          ),
           body: getListView(),
         ));
+  }
+
+  void showSnackBar(BuildContext context) {
+    var showSnackBar = SnackBar(
+        duration: const Duration(seconds: 3),
+        content: const Text('add successfully'),
+        action: SnackBarAction(
+            label: "UNDO",
+            onPressed: () {
+              // action
+              debugPrint("UNDO Ckliked");
+            }));
+    ScaffoldMessenger.of(context).showSnackBar(showSnackBar);
   }
 }
 
